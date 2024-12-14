@@ -7,6 +7,7 @@ class CalculatorButton extends StatelessWidget {
   final String? btnTextValue;
   final Color? btnColor;
   final Color? btnTextColor;
+  final Function(String) onButtonTap;
 
   const CalculatorButton({
     super.key,
@@ -14,8 +15,9 @@ class CalculatorButton extends StatelessWidget {
     this.btnWidget,
     this.btnTextColor,
     this.btnFlexValue = 1,
-     this.btnTextValue,
+    this.btnTextValue,
     this.btnTextFontSize = 32.0,
+    required this.onButtonTap
   });
 
   @override
@@ -25,7 +27,11 @@ class CalculatorButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            if (btnTextValue != null) {
+              onButtonTap(btnTextValue!);
+            }
+          },
           style: ElevatedButton.styleFrom(
               padding: EdgeInsets.zero,
               backgroundColor: btnColor ?? const Color(0XFF303136),
