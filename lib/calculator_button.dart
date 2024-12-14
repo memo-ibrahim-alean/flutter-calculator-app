@@ -30,6 +30,8 @@ class CalculatorButton extends StatelessWidget {
           onPressed: () {
             if (btnTextValue != null) {
               onButtonTap(btnTextValue!);
+            } else if (btnWidget != null) {
+              onButtonTap('backspace'); // Handle backspace button
             }
           },
           style: ElevatedButton.styleFrom(
